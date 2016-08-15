@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tasks</title>
+</head>
+<body>
+<form method="get" action="/tasks">
+  <button type="submit">Home</button>
+</form>
+<% if logged_in? %>
+  <form method="get" action="/logout">
+    <button type="submit">Log Out</button>
+  </form>
+<% end %>
+	<%= yield %>
+</body>
+</html>
