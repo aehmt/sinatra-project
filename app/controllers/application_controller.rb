@@ -28,5 +28,10 @@ class ApplicationController < Sinatra::Base
 			User.find(session[:user_id])
 		end
 	end
+
+  error Sinatra::NotFound do
+    content_type 'text/plain'
+    [404, "Ahmet\'s Page Not Found"]
+  end
 end
 
