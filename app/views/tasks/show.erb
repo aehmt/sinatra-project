@@ -1,0 +1,20 @@
+<% if flash.has?(:message) %>
+  <div style="color:green;">
+    <%= flash[:message] %>
+  </div>
+<% end %>
+<h5> Task: </h5>
+<p> <%= @task.content %> </p>
+<form action="/tasks/<%=@task.id%>/delete" method="post">
+<input type="submit" value="Delete Task">
+</form>
+<form method="get" action="/tasks/<%=@task.id%>/edit">
+  <button type="submit">Edit Task</button>
+</form>
+
+<form method="get" action="/tasks">
+  <button type="submit">Pending Tasks</button>
+</form>
+<form method="get" action="/tasks/new">
+  <button type="submit">Add New Task</button>
+</form>
