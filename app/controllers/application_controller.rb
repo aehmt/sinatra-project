@@ -34,4 +34,3 @@ class ApplicationController < Sinatra::Base
     [404, "Ahmet\'s Page Not Found"]
   end
 end
-
