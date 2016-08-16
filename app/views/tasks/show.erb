@@ -1,17 +1,21 @@
+
 <% if flash.has?(:message) %>
   <div style="color:green;">
     <%= flash[:message] %>
   </div>
 <% end %>
-<h5> Task: </h5>
-<p> <%= @task.content %> </p>
+
+<h3> <%= @task.name %>: </h3>
+<textarea name="content" rows="10" cols="40" readonly><%=@task.content%></textarea>
 <form action="/tasks/<%=@task.id%>/delete" method="post">
-<input type="submit" value="Delete Task">
+  <input type="submit" value="Delete Task">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
 </form>
 <form method="get" action="/tasks/<%=@task.id%>/edit">
   <button type="submit">Edit Task</button>
 </form>
 
+<br>
 <form method="get" action="/tasks">
   <button type="submit">Pending Tasks</button>
 </form>

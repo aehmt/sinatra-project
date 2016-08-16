@@ -1,0 +1,31 @@
+<% if flash.has?(:message) %>
+  <div style="color:green;">
+    <%= flash[:message] %>
+  </div>
+<% end %>
+
+<p> Welcome, <%= current_user.username.capitalize %>
+
+<% if !(@tasks.size == 0) %>
+<h4> Pending Tasks </h4>
+
+  <% @tasks.each do |task| %>
+    <p> <%= @tasks.find_index(task)+1 %>. <%= task.name %> </p>
+    <textarea name="content" rows="10" cols="40" readonly><%=task.content%></textarea>
+    <form method="get" action="/tasks/<%=task.id%>/edit">
+      <button type="submit">Edit Task</button>
+    </form>
+    <form action="/tasks/<%=task.id%>/delete" method="post">
+    <input type="submit" value="Delete Task">
+    <input id="hidden" type="hidden" name="_method" value="DELETE">
+    </form>
+  <% end %>
+  
+<% else %>
+  <p> There is no task to show.  </p>
+<% end %>
+
+<br>
+<form method="get" action="/tasks/new">
+  <button type="submit">Add New Task</button>
+</form>
